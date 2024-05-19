@@ -3,9 +3,8 @@ import './list.css'
 import axios from "axios"
 import { toast } from 'react-toastify'
 
-const List = () => {
+const List = ({url}) => {
 
-  const url = "http://localhost:4000"
   const [list,setList] = useState([]);
   const fetchList = async () => {
     const response = await axios.get(`${url}/api/food/list`);
@@ -46,8 +45,8 @@ const List = () => {
             <div key={index} className='list-table-format'>
               <img src={`${url}/images/` + item.image} alt="" />
               <p>{item.name}</p>
-              <p>${item.category}</p>
-              <p>{item.price}</p>
+              <p>{item.category}</p>
+              <p>${item.price}</p>
               <p onClick={() => removeFood(item._id)} className='cursor'>X</p>
             </div>
           )
